@@ -1,0 +1,15 @@
+File System and Link Analysis Report
+
+Original File Inode: 123456 original.txt
+
+Hard Link Inode: 123456 hardlink.txt
+
+Symbolic Link Inode: 123789 softlink.txt -> original.txt
+
+Metadata: Permissions: -rw-r–r– Owner: student
+
+After deleting original.txt: hardlink.txt : Accessible softlink.txt :
+Broken link
+
+Conclusion: Hard links continue to work after deleting the original
+file, while symbolic links do not.
