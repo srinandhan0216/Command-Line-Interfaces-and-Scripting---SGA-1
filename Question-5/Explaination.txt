@@ -1,0 +1,19 @@
+Question 5 – Storage Health Assessment
+
+1.  lsblk Explanation: I listed all available storage devices and
+    partitions. This provides an overview of the storage configuration.
+
+2.  df -h Explanation: I displayed mounted file systems and their disk
+    usage in a human-readable format. This helps monitor available
+    storage space.
+
+3.  df -i Explanation: I checked inode usage for all mounted file
+    systems. The output shows used and available inodes.
+
+4.  mount Explanation: I listed all currently mounted file systems. This
+    confirms which storage devices are mounted and accessible.
+
+5.  nano Storage_Assessment_Report.txt Explanation: I used the nano text
+    editor to create and edit the storage assessment report. After
+    entering the report content, I saved the file using Ctrl+O and
+    exited with Ctrl+X.
