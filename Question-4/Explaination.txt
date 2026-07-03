@@ -1,0 +1,22 @@
+Question 4 – File Access and I/O Investigation
+
+1.  echo “Linux IO Test” > io.txt Explanation: I created a file named
+    io.txt containing sample text. This file is used for input and
+    output testing.
+
+2.  lsof io.txt Explanation: I checked whether any process had the file
+    open. This helps investigate file access and usage.
+
+3.  ulimit -a Explanation: I displayed the current system resource
+    limits, including limits for open files and processes.
+
+4.  ls > output.txt Explanation: I redirected the standard output of the
+    ls command into output.txt instead of displaying it on the screen.
+
+5.  ls invalidfile 2> error.txt Explanation: I redirected the error
+    message produced by an invalid command into error.txt using standard
+    error redirection.
+
+6.  ls io.txt invalidfile > result.txt 2>&1 Explanation: I redirected
+    both standard output and standard error into a single file named
+    result.txt for complete logging.
