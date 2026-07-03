@@ -1,0 +1,77 @@
+LINUX FILE MANAGEMENT – OBSERVATIONS / EXPLANATION
+
+1.  Directory Creation Observation: The mkdir -p command successfully
+    created the directories docs, src, config, and scripts. The -p
+    option creates parent directories if they do not already exist and
+    does not produce an error if the directory already exists.
+
+2.  File Creation Observation: The touch command created the required
+    files:
+
+-   design_notes.txt
+-   main.py
+-   settings.conf
+-   deploy.sh
+
+Initially, all files were empty.
+
+3.  Writing Data into Files Observation: The echo command was used to
+    write text into the files. The files design_notes.txt, main.py, and
+    settings.conf contained the expected content after execution.
+
+4.  Error While Creating deploy.sh Observation: The command containing
+    #!/bin/bash produced the error:
+    -bash: !/bin/bash\necho: event not found
+
+Explanation: Bash interpreted the ! as a history expansion character.
+Therefore, the command failed and deploy.sh remained empty. Using single
+quotes or escaping the ! prevents this error.
+
+5.  Listing Files Observation: The ls -lR ProjectWorkspace command
+    displayed the complete directory tree, file names, permissions,
+    ownership, file sizes, and timestamps. This verified that the
+    project structure was created successfully.
+
+6.  umask Verification Observation: The default umask value was 0022. A
+    file created with this setting had default permissions that allowed
+    read access to group and others.
+
+After changing the umask to 027, newly created files became more
+restrictive. Other users received no permissions and group write
+permission was removed.
+
+7.  Permission Changes Observation: The chmod command successfully
+    changed permissions.
+
+Permissions assigned: - settings.conf → 600 - design_notes.txt → 640 -
+main.py → 644 - Directories → 750 - deploy.sh → 750
+
+Explanation: Sensitive files such as settings.conf were protected by
+allowing access only to the owner, while executable scripts and
+directories were given execute permission where required.
+
+8.  Creating Group and User Observation: A new group named projectteam
+    and a new user named devuser were successfully created using
+    administrative privileges.
+
+9.  Changing Ownership Observation: The command
+    sudo chown -R devuser:projectteam ProjectWorkspace changed the owner
+    of all project files and directories from the original user to
+    devuser and the group to projectteam.
+
+10. Permission Denied Error Observation: After ownership changed, the
+    original user received “Permission denied” while accessing the
+    project subdirectories.
+
+Explanation: The directories had permission 750, which grants access
+only to: - Owner (Read, Write, Execute) - Group (Read, Execute) - Others
+(No permission)
+
+Since the original user was neither the owner nor an authorized group
+member, access to the directories was denied.
+
+Overall Observation: The experiment successfully demonstrated Linux file
+management, file creation, directory management, permission control
+using umask and chmod, ownership management using chown, and user/group
+administration. It also showed how incorrect permissions or ownership
+can restrict access to files and directories, improving system security.
