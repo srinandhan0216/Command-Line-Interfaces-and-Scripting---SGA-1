@@ -1,0 +1,15 @@
+File Access and I/O Investigation Report
+
+Open Files: No active process using io.txt (or listed by lsof if open).
+
+Resource Limits: Open files: 1024 Stack size: 8192 KB
+
+Output Redirection: ls > output.txt completed successfully.
+
+Error Redirection: ls invalidfile 2> error.txt Error stored in
+error.txt.
+
+Combined Redirection: Output and errors saved in result.txt.
+
+Conclusion: Linux supports separate standard output and standard error
+streams.
