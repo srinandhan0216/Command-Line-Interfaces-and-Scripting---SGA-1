@@ -1,0 +1,50 @@
+====================================================
+Explanations / Observations – Question 1
+(1-2 sentences per command, as required by the assignment)
+====================================================
+
+Command: whoami
+Explanation: This command prints the username of the currently logged-in user.
+I ran it to confirm which account I'm operating under before touching company resources.
+
+Command: id
+Explanation: This shows my user ID (UID), group ID (GID), and all group memberships in one line.
+It confirms both my identity and the permission groups that control what I can access.
+
+Command: groups
+Explanation: This lists only the group names my account belongs to.
+It's useful for quickly checking whether I have the group membership needed for a task
+(e.g., "sudo" or "docker" group) without parsing the full id output.
+
+Command: echo $SHELL
+Explanation: This prints the path to my default login shell as defined in /etc/passwd.
+It tells me which shell environment (bash, zsh, etc.) I'm expected to be using.
+
+Command: ps -p $$ -o comm=
+Explanation: This shows the actual process name of the shell currently running in this session
+. I used it to double check the live shell matches
+my default shell.
+
+Command: pwd
+Explanation: This prints the absolute path of my current working directory.
+It confirms exactly where in the filesystem I am before creating or modifying files.
+
+Command: mkdir -p ~/workspace && cd ~/workspace
+Explanation: This created a workspace directory in my home folder and moved into it.
+I did this so all lab files stay organized in one predictable location.
+
+Command: touch user_info.txt plan.txt
+Explanation: This created two empty placeholder files inside the workspace.
+It demonstrates file creation and gives me files to list/verify in the next step.
+
+Command: ls -la
+Explanation: This lists all files and directories in the workspace, including hidden
+ones (starting with "."), along with permissions, ownership, size, and timestamps.
+The output confirmed both files were created successfully with the expected permissions.
+
+Command: ping -c 4 google.com
+Explanation: This sends 4 ICMP echo request packets to google.com to verify network
+connectivity. A successful run (0% packet loss, replies received) confirms the machine
+has working internet/network access; failures would indicate a DNS or connectivity issue.
+
+====================================================
