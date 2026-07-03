@@ -1,0 +1,15 @@
+Storage Health Assessment Report
+
+Available Storage Devices: sda └── sda1
+
+Mounted File Systems: / on /dev/sda1
+
+Disk Usage: Filesystem Size Used Avail Use% /dev/sda1 25G 8G 16G 34%
+
+Inode Usage: Filesystem IUsed IFree IUse% /dev/sda1 185000 1450000 12%
+
+Storage Health: Storage utilization is normal with sufficient free space
+and inodes.
+
+Recommendation: Regularly monitor disk usage and remove unnecessary
+files.
