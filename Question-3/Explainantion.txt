@@ -1,0 +1,31 @@
+Question 3 – File System and Link Analysis
+
+1.  echo “Linux Lab” > original.txt Explanation: I created a file named
+    original.txt and added sample content. This file serves as the
+    original file for the link experiment.
+
+2.  ln original.txt hardlink.txt Explanation: I created a hard link to
+    the original file. Both files share the same inode and reference the
+    same data.
+
+3.  ln -s original.txt softlink.txt Explanation: I created a symbolic
+    link that points to the original file path. It acts as a shortcut to
+    the original file.
+
+4.  ls -li Explanation: I displayed inode numbers and detailed file
+    information. The output shows that the hard link shares the inode
+    while the symbolic link does not.
+
+5.  stat original.txt Explanation: I viewed detailed metadata such as
+    inode number, permissions, ownership, timestamps, and file size.
+
+6.  rm original.txt Explanation: I deleted the original file to observe
+    the behavior of both hard and symbolic links after deletion.
+
+7.  cat hardlink.txt Explanation: I opened the hard link after deleting
+    the original file. The content remained available because the inode
+    still exists.
+
+8.  cat softlink.txt Explanation: I attempted to open the symbolic link
+    after deleting the original file. The command failed because the
+    symbolic link points to a missing file.
