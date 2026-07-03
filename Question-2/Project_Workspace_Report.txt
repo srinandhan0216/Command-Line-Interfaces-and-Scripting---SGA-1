@@ -1,0 +1,124 @@
+Linux File Management and Permissions Report
+
+Objective
+
+Create a project workspace, organize files into directories, manage file
+permissions using umask and chmod, create a new group and user, and
+change ownership of project files.
+
+Step 1: Creating the Project Structure
+
+Commands used: - mkdir -p ProjectWorkspace/docs -
+mkdir -p ProjectWorkspace/src - mkdir -p ProjectWorkspace/config -
+mkdir -p ProjectWorkspace/scripts
+
+These commands created four directories: - docs - src - config - scripts
+
+Step 2: Creating Files
+
+Files created: - design_notes.txt - main.py - settings.conf - deploy.sh
+
+The touch command creates empty files.
+
+Step 3: Adding Content
+
+Commands such as echo "text" > filename were used to write content into
+files.
+
+Contents added: - Documentation text in design_notes.txt - Python code
+in main.py - Password configuration in settings.conf
+
+While creating deploy.sh, the following error occurred:
+
+-bash: !/bin/bash\necho: event not found
+
+Reason: The exclamation mark (!) triggered Bash history expansion.
+Because of this, the command failed and deploy.sh remained empty.
+
+Correct command:
+
+    echo -e '#!/bin/bash\necho "Deploying..."' > ProjectWorkspace/scripts/deploy.sh
+
+Step 4: Verifying Structure
+
+ls -lR ProjectWorkspace
+
+This command recursively displayed: - Directories - Files -
+Permissions - Owner - Group - File size
+
+Step 5: Understanding umask
+
+Current umask: 0022
+
+A test file was created with default permissions.
+
+Then: umask 027
+
+A second test file was created.
+
+Comparison: - umask 022 allows read permission for others. - umask 027
+removes permissions for others and group write permission, making files
+more secure.
+
+Finally: umask 0022
+
+restored the default setting.
+
+Step 6: Changing Permissions
+
+Permissions were modified using chmod.
+
+Applied permissions: - settings.conf → 600 - config directory → 750 -
+design_notes.txt → 640 - docs directory → 750 - main.py → 644 - src
+directory → 750 - deploy.sh → 750 - scripts directory → 750
+
+Permission meanings:
+
+600 - Owner: Read, Write - Group: No access - Others: No access
+
+640 - Owner: Read, Write - Group: Read - Others: No access
+
+644 - Owner: Read, Write - Group: Read - Others: Read
+
+750 - Owner: Read, Write, Execute - Group: Read, Execute - Others: No
+access
+
+Step 7: Creating Group and User
+
+Commands: - sudo groupadd projectteam -
+sudo useradd -m -g projectteam devuser
+
+Results: - Group projectteam created. - User devuser created with a home
+directory.
+
+Step 8: Changing Ownership
+
+Command: sudo chown -R devuser:projectteam ProjectWorkspace
+
+Ownership changed from: - Owner: srinandhan
+
+to: - Owner: devuser - Group: projectteam
+
+Step 9: Permission Denied
+
+After ownership changed, the original user executed:
+ls -lR ProjectWorkspace
+
+Errors: - Permission denied for config - Permission denied for docs -
+Permission denied for scripts - Permission denied for src
+
+Reason: The directories had permission 750. Only: - Owner (devuser) -
+Members of group projectteam
+
+can access them. The original user was neither the owner nor a member of
+the group.
+
+Solutions: 1. Add the original user to projectteam. 2. Change
+permissions using chmod. 3. Restore ownership if required.
+
+Conclusion
+
+This experiment demonstrated: - Creating directories and files - Writing
+data into files - Using ls - Using umask - Changing permissions with
+chmod - Creating users and groups - Changing ownership with chown -
+Understanding Linux permission errors
